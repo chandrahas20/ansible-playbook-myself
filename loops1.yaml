@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: install git
+    yum:
+      name: git
+      state: present
+  - name: Install http
+    yum:
+      name: httpd
+      state: present
+  - name: install zip
+    yum:
+      name: zip
+      state: present

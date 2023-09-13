@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: install softwares
+    yum: name="{{item}}" state=present
+    with_items:
+      - git
+      - unzip
+      - wget
+      - maven

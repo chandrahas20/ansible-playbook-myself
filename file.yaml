@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  tasks:
+  - name: create a file
+    file:
+      path: /tmp/chandra.txt
+      mode: 1777
+      owner: ec2-user
+      state: touch

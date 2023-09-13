@@ -1,0 +1,26 @@
+---
+- hosts: all
+  become: true
+  vars:
+    env: prod
+  vars_files:
+  - "{{env}}_vars.yaml"
+  tasks:
+  
+  - name: install apache http servers
+    yum:
+      name: httpd
+      state: latest
+  
+  - name: copy index.html
+    template:
+      src: index.html
+      dest: /var/www/html/index.html
+    notify:
+      - start httpd start...
+  handlers:  
+  - name: start httpd start...
+    service:
+      name: httpd
+      state: restarted
+      enabled: true
